@@ -34,6 +34,9 @@
 #define FLAG_SAVE_CRYPTEX_SEED    (1 << 4)
 #define FLAG_SAVE_CRYPTEX_NONCE   (1 << 5)
 
+int secure = 1;
+int production = 1;
+
 extern int idevicerestore_debug;
 extern unsigned char *base64decode(const char *buf, size_t *size);
 #define reterror(code,a ...) {error(a); err = code; goto error;}
@@ -69,6 +72,8 @@ static struct option longopts[] = {
     { "bplist",             no_argument,       NULL, 'p' },
     { "generator",          required_argument, NULL, 'g' },
     { "cryptexseed",        required_argument, NULL, 'x' },
+    { "insecure",           no_argument,       NULL, 'I' },
+    { "nonproduction",      no_argument,       NULL, 'P' },
     { NULL, 0, NULL, 0 }
 };
 
@@ -338,6 +343,12 @@ int main(int argc, const char * argv[]) {
                 break;
             case 'p': // long option: "bplist"; can be called as short option
                 save_bplist = 1;
+                break;
+            case 'I':
+                secure = 0;
+                break;
+            case 'P':
+                production = 0;
                 break;
             default:
                 cmd_help();

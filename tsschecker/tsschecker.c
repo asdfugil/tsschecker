@@ -976,10 +976,10 @@ int tss_populate_devicevals(plist_t tssreq, uint64_t ecid, char *nonce, size_t n
         plist_dict_set_item(tssreq, "ApSepNonce", plist_new_data(sep_nonce, sep_nonce_size));
     }
     
-    plist_dict_set_item(tssreq, "ApProductionMode", plist_new_bool(1));
+    plist_dict_set_item(tssreq, "ApProductionMode", plist_new_bool(production));
     
     if (image4supported) {
-        plist_dict_set_item(tssreq, "ApSecurityMode", plist_new_bool(1));
+        plist_dict_set_item(tssreq, "ApSecurityMode", plist_new_bool(secure));
         plist_dict_set_item(tssreq, "ApSupportsImg4", plist_new_bool(1));
     } else {
         plist_dict_set_item(tssreq, "ApSupportsImg4", plist_new_bool(0));
