@@ -1157,8 +1157,8 @@ int tss_populate_cryptexvals(plist_t tssreq, plist_t tssparameters, t_devicevals
     plist_dict_set_item(tssreq, "ApSecurityDomain", plist_new_string("0x01"));
     plist_dict_set_item(tssreq, "@Locality", plist_new_string("en_US"));
     plist_dict_set_item(tssreq, "@BBTicket", plist_new_bool(1));
-    plist_dict_set_item(tssreq, "ApSecurityMode", plist_new_bool(1));
-    plist_dict_set_item(tssreq, "Cryptex1,ProductionMode", plist_new_bool(1));
+    plist_dict_set_item(tssreq, "ApSecurityMode", plist_new_bool(production));
+    plist_dict_set_item(tssreq, "Cryptex1,ProductionMode", plist_new_bool(production));
     plist_t chipid_node = plist_dict_get_item(tssreq, "ApChipID");
     char *chipid_str = NULL;
     uint64_t chipid = 0;
