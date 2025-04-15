@@ -55,6 +55,8 @@
 #define swapchar(a,b) ((a) ^= (b),(b) ^= (a),(a) ^= (b)) //swaps a and b, unless they are the same variable
 #define printJString(str) printf("%.*s",(int)str->size,str->value)
 
+extern int production, secure;
+
 #ifdef WIN32
 #define __mkdir(path, mode) mkdir(path)
 static int win_path_didinit = 0;
